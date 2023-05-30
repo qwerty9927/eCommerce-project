@@ -1,7 +1,7 @@
 const { ReasonPhrases, StatusCodes } = require("../utils/httpStatusCode")
 
 class ErrorResponse extends Error {
-  constructor({message, statusCode, code}){
+  constructor(message = ReasonPhrases.INTERNAL_SERVER_ERROR, statusCode = StatusCodes.INTERNAL_SERVER_ERROR, code = StatusCodes.INTERNAL_SERVER_ERROR){
     super(message)
     this.statusCode = statusCode
     this.code = code
@@ -9,18 +9,26 @@ class ErrorResponse extends Error {
 }
 
 class ForbiddenRequest extends ErrorResponse {
-  constructor({message = ReasonPhrases.FORBIDDEN, statusCode = StatusCodes.FORBIDDEN, code = StatusCodes.FORBIDDEN}){
-    super({message, statusCode, code})
+  constructor(message = ReasonPhrases.FORBIDDEN, statusCode = StatusCodes.FORBIDDEN, code = StatusCodes.FORBIDDEN){
+    super(message, statusCode, code)
   }
 }
 
 class ConflictRequest extends ErrorResponse {
-  constructor({message = ReasonPhrases.CONFLICT, statusCode = StatusCodes.CONFLICT, code = StatusCodes.CONFLICT}){
-    super({message, statusCode, code})
+  constructor(message = ReasonPhrases.CONFLICT, statusCode = StatusCodes.CONFLICT, code = StatusCodes.CONFLICT){
+    super(message, statusCode, code)
+  }
+}
+
+class AuthFailureRequest extends ErrorResponse {
+  constructor(message = ReasonPhrases.UNAUTHORIZED, statusCode = StatusCodes.UNAUTHORIZED, code = StatusCodes.UNAUTHORIZED){
+    super(message, statusCode, code)
   }
 }
 
 module.exports = {
+  ErrorResponse,
   ForbiddenRequest,
-  ConflictRequest
+  ConflictRequest,
+  AuthFailureRequest
 }

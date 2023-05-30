@@ -1,0 +1,46 @@
+@url_dev = http://localhost:3050/v1/api
+### signUp
+POST {{url_dev}}/access/signup
+Content-Type: application/json
+
+{
+  "name": "Tan",
+  "email": "tanvo9933@gmail.com",
+  "password": "123"
+}
+
+### check api key before signUp
+POST {{url_dev}}/access/signup
+x-api-key: 123
+Content-Type: application/json
+
+{
+  "name": "tan",
+  "email": "tanvo9927@gmail.com",
+  "password": "pass"
+}
+
+### login
+POST {{url_dev}}/access/login
+x-api-key: 123
+Content-Type: application/json
+
+{
+  "email": "tanvo9927@gmail.com",
+  "password": "pass"
+}
+
+### logout
+GET {{url_dev}}/access/logout
+x-api-key: 123
+x-client-id: 6474ab2fe6402c6dc34c1d90
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDc0YWIyZmU2NDAyYzZkYzM0YzFkOTAiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODU0MjkyMzgsImV4cCI6MTY4NTYwMjAzOH0.7XF4KeYJKIkkO-3pCEgyPWkeGUm22wumjP50T87zOXk
+Content-Type: application/json
+
+### refreshToken
+GET {{url_dev}}/access/refreshtoken
+x-api-key: 123
+x-client-id: 6474ab2fe6402c6dc34c1d90
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDc0YWIyZmU2NDAyYzZkYzM0YzFkOTAiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODU0MjkyMzgsImV4cCI6MTY4NTYwMjAzOH0.7XF4KeYJKIkkO-3pCEgyPWkeGUm22wumjP50T87zOXk
+refreshtoken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDc0YWIyZmU2NDAyYzZkYzM0YzFkOTAiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODU0MzI5NDcsImV4cCI6MTY4NjAzNzc0N30.JOch9CWJe1wmEkFIxXEShhtwmr4HqEcIK-2ZWH-4X1M
+Content-Type: application/json

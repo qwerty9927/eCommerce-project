@@ -27,6 +27,7 @@ app.use((req, res, next) => {
 })
 
 app.use((error, req, res, next) => {
+  console.log(error)
   const statusCode = error.statusCode || 500
   const code = error.code || statusCode
   const message = error.message || "Internal Server Error"
