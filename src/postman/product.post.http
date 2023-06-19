@@ -1,0 +1,21 @@
+@url_dev = http://localhost:3050/v1/api
+### create product
+POST {{url_dev}}/product/create
+x-api-key: 123
+x-client-id: 648fd76ebb50fa051b69650d
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDhmZDc2ZWJiNTBmYTA1MWI2OTY1MGQiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODcxNDg3NjUsImV4cCI6MTY4NzMyMTU2NX0.MaOXFTEsZ33BrFZMeq6AGdbPln79pi0iiphP6VFuQWU
+
+{
+  "product_name": "Ao thun",
+  "product_thumb": "abc.png",
+  "product_price": "100000",
+  "product_quantity_sold": "10020",
+  "product_type": "Clothing",
+  "product_detail": {
+    "product_description": "San pham duoc gia cong bang cong nghe Nhat Ban",
+    "brand": "MinhTanBrand",
+    "size": "xxl",
+    "material": "100% cotton"
+  }
+}
