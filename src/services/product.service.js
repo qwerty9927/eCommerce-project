@@ -43,7 +43,7 @@ class ProductFactory {
     return await findAllProducts({ limit, page, sort, select, filter })
   }
   // 3. findProduct
-  async findProduct({ product_id, unSelect = ["__v"] }) {
+  async findProduct({ product_id, unSelect = ["__v", "createdAt", "updatedAt"] }) {
     return await findProduct({ product_id, unSelect })
   }
   // 4. updateProduct
@@ -68,9 +68,8 @@ class Product {
     this.product_shop = product_shop
   }
 
-  async createProduct(product_detail_id) {
-    console.log(this)
-    return await ProductModel.create({ ...this, _id: product_detail_id })
+  async createProduct() {
+    return await ProductModel.create({ ...this })
   }
 }
 
@@ -82,11 +81,11 @@ class Clothing extends Product {
   }
 
   async createProductDetail() {
-    const newClothing = await ClothingModel.create(this.product_detail)
-    if (!newClothing) throw new ErrorResponse()
-
-    const newProduct = await this.createProduct(newClothing._id)
+    const newProduct = await this.createProduct()
     if (!newProduct) throw new ErrorResponse()
+
+    const newClothing = await ClothingModel.create({ ...this.product_detail, _id: newProduct._id })
+    if (!newClothing) throw new ErrorResponse()
 
     return { newProduct, product_detail: newClothing }
   }
@@ -101,18 +100,18 @@ class Electronic extends Product {
   }
 
   async createProductDetail() {
-    const newElectronic = await ElectronicModel.create(this.product_detail)
-    if (!newElectronic) throw new ErrorResponse()
-
-    const newProduct = await this.createProduct(newProduct._id)
+    const newProduct = await this.createProduct()
     if (!newProduct) throw new ErrorResponse()
+    
+    const newElectronic = await ElectronicModel.create({ ...this.product_detail, _id: newProduct._id })
+    if (!newElectronic) throw new ErrorResponse()
 
     return { newProduct, product_detail: newElectronic }
   }
 }
 
 // register area
-ProductFactory.registerProduct({ type: "Clothing", classRef: Clothing })
-ProductFactory.registerProduct({ type: "Electronic", classRef: Electronic })
+ProductFactory.registerProduct({ type: "clothing", classRef: Clothing })
+ProductFactory.registerProduct({ type: "electronic", classRef: Electronic })
 
 module.exports = new ProductFactory

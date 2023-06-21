@@ -4,9 +4,9 @@ const { getSelectData, unGetSelectData } = require("../../utils")
 const searchProduct = async (keySearch) => {
   const regexSearch = new RegExp(keySearch)
   return ProductModel.find({
-    $text: { $search: regexSearch}
-  }, { score: { $meta: 'textScore' }})
-  .lean()
+    $text: { $search: regexSearch }
+  }, { score: { $meta: 'textScore' } })
+    .lean()
 }
 
 const findAllProducts = async ({ limit, page, sort, select, filter }) => {
@@ -21,9 +21,15 @@ const findAllProducts = async ({ limit, page, sort, select, filter }) => {
 }
 
 const findProduct = async ({ product_id, unSelect }) => {
-  return await ProductModel.findById(product_id)
+  const result = await ProductModel.findById(product_id)
+    .populate({
+      path: "_id",
+      select: unGetSelectData(unSelect)
+    })
     .select(unGetSelectData(unSelect))
     .lean()
+  const { _id, ...product_detail } = result._id
+  return { ...result, _id, product_detail }
 }
 
 module.exports = {

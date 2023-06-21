@@ -4,6 +4,12 @@ const DOCUMENT_NAME = "product"
 const COLLECTION_NAME = "Products"
 
 const productSchema = new Schema({
+  _id: {
+    type: Schema.Types.ObjectId,
+    unique: true,
+    refPath: "product_type",
+    auto: true
+  },
   product_name: {
     type: String,
     required: true
@@ -22,7 +28,7 @@ const productSchema = new Schema({
   },
   product_type: {
     type: String,
-    enum: ["Electronic", "Clothing"],
+    enum: ["electronic", "clothing"],
     required: true
   },
   product_shop: { 
