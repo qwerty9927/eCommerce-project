@@ -5,8 +5,11 @@ const { ErrorResponse } = require('../core/error.response')
 const {
   searchProduct,
   findAllProducts,
-  findProduct
+  findProduct,
+  updateProductById,
+  coupleProduct
 } = require("../models/repositories/product.repo")
+const { removeUndefineObject } = require("../utils")
 
 class ProductFactory {
   static productRegistry = {}
@@ -18,7 +21,7 @@ class ProductFactory {
     const productClass = ProductFactory.productRegistry[type]
     if (!productClass) throw new ErrorResponse(`Invaild product type ${type}`)
 
-    return await new productClass(payload).createProductDetail()
+    return await new productClass(payload).createProduct()
   }
 
   // async createProduct(type, payload) {
@@ -47,6 +50,12 @@ class ProductFactory {
     return await findProduct({ product_id, unSelect })
   }
   // 4. updateProduct
+  async updateProduct({ product_id, type, payload }) {
+    const productClass = ProductFactory.productRegistry[type]
+    if (!productClass) throw new ErrorResponse()
+
+    return await new productClass(removeUndefineObject(payload)).updateProduct(product_id)
+  }
   // End query
 
 }
@@ -71,6 +80,10 @@ class Product {
   async createProduct() {
     return await ProductModel.create({ ...this })
   }
+
+  async updateProduct(product_id) {
+    return await updateProductById({ product_id, payload: this, model: ProductModel })
+  }
 }
 
 class Clothing extends Product {
@@ -80,14 +93,23 @@ class Clothing extends Product {
     this.product_detail = product_detail
   }
 
-  async createProductDetail() {
-    const newProduct = await this.createProduct()
+  async createProduct() {
+    const newProduct = await super.createProduct()
     if (!newProduct) throw new ErrorResponse()
 
     const newClothing = await ClothingModel.create({ ...this.product_detail, _id: newProduct._id })
     if (!newClothing) throw new ErrorResponse()
 
-    return { newProduct, product_detail: newClothing }
+    return coupleProduct(newProduct, newClothing)
+  }
+
+  async updateProduct(product_id) {
+    let productInfoGeneral, productDetail
+    if(this.product_detail){
+      productDetail = await updateProductById({ product_id, payload: this.product_detail, model: ClothingModel })
+    }
+    productInfoGeneral = await super.updateProduct(product_id)
+    return coupleProduct(productInfoGeneral, productDetail)
   }
 }
 
@@ -99,14 +121,14 @@ class Electronic extends Product {
     this.product_detail = product_detail
   }
 
-  async createProductDetail() {
-    const newProduct = await this.createProduct()
+  async createProduct() {
+    const newProduct = await super.createProduct()
     if (!newProduct) throw new ErrorResponse()
-    
+
     const newElectronic = await ElectronicModel.create({ ...this.product_detail, _id: newProduct._id })
     if (!newElectronic) throw new ErrorResponse()
 
-    return { newProduct, product_detail: newElectronic }
+    return coupleProduct(newProduct, newElectronic)
   }
 }
 

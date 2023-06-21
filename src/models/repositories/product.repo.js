@@ -1,6 +1,10 @@
 const ProductModel = require("../product.model")
 const { getSelectData, unGetSelectData } = require("../../utils")
 
+const coupleProduct = (general, detail) => {
+  return { ...general, product_detail: detail }
+}
+
 const searchProduct = async (keySearch) => {
   const regexSearch = new RegExp(keySearch)
   return ProductModel.find({
@@ -32,8 +36,14 @@ const findProduct = async ({ product_id, unSelect }) => {
   return { ...result, _id, product_detail }
 }
 
+const updateProductById = async ({ product_id, payload, model, isNew = true }) => {
+  return await model.findByIdAndUpdate(product_id, payload, { new: isNew }).lean()
+}
+
 module.exports = {
   searchProduct,
   findAllProducts,
-  findProduct
+  findProduct,
+  updateProductById,
+  coupleProduct
 }

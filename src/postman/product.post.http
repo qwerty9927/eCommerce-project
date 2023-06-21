@@ -7,34 +7,34 @@ Content-Type: application/json
 authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDhmZDc2ZWJiNTBmYTA1MWI2OTY1MGQiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODczMTM4NjgsImV4cCI6MTY4NzQ4NjY2OH0.2xLDIOMZFkWkxl42cNZSURLrvfJwLp8hzO9QqnwiRp8
 
 # clothing
-# {
-#   "product_name": "Ao thun 1",
-#   "product_thumb": "abc.png",
-#   "product_price": "100000",
-#   "product_quantity_sold": "10020",
-#   "product_type": "clothing",
-#   "product_detail": {
-#     "product_description": "San pham duoc gia cong bang cong nghe Nhat Ban",
-#     "brand": "MinhTanBrand",
-#     "size": "xxl",
-#     "material": "100% cotton"
-#   }
-# }
-
-# electronic
 {
-  "product_name": "May lanh 1",
-  "product_thumb": "abcd.png",
+  "product_name": "Ao thun 2",
+  "product_thumb": "abc.png",
   "product_price": "100000",
   "product_quantity_sold": "10020",
-  "product_type": "electronic",
+  "product_type": "clothing",
   "product_detail": {
     "product_description": "San pham duoc gia cong bang cong nghe Nhat Ban",
-    "manufacturer": "MinhTanFacturer",
-    "model": "m012",
-    "color": "Black"
+    "brand": "MinhTanBrand",
+    "size": "xxl",
+    "material": "100% cotton"
   }
 }
+
+# electronic
+# {
+#   "product_name": "May lanh 1",
+#   "product_thumb": "abcd.png",
+#   "product_price": "100000",
+#   "product_quantity_sold": "10020",
+#   "product_type": "electronic",
+#   "product_detail": {
+#     "product_description": "San pham duoc gia cong bang cong nghe Nhat Ban",
+#     "manufacturer": "MinhTanFacturer",
+#     "model": "m012",
+#     "color": "Black"
+#   }
+# }
 
 ### search product
 GET {{url_dev}}/product/search/thun
@@ -50,3 +50,25 @@ Content-Type: application/json
 GET {{url_dev}}/product/649274d53c451da8439de6c1
 x-api-key: 123
 Content-Type: application/json
+
+### update product
+PATCH {{url_dev}}/product/update/64926ef8fd4aea8957626d59
+x-api-key: 123
+x-client-id: 648fd76ebb50fa051b69650d
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDhmZDc2ZWJiNTBmYTA1MWI2OTY1MGQiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODczMTM4NjgsImV4cCI6MTY4NzQ4NjY2OH0.2xLDIOMZFkWkxl42cNZSURLrvfJwLp8hzO9QqnwiRp8
+
+# clothing
+{
+  "product_name": "Ao thun 3",
+  "product_thumb": null,
+  "product_price": "100000",
+  "product_quantity_sold": "10020",
+  "product_type": "clothing",
+  "product_detail": {
+    "product_description": "San pham duoc gia cong bang cong nghe 2",
+    "brand": null,
+    "size": null,
+    "material": "100% cotton"
+  }
+}

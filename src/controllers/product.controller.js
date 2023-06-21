@@ -20,36 +20,51 @@ class ProductController {
     }
   }
 
-  async searchProduct (req, res, next) {
+  async searchProduct(req, res, next) {
     try {
       new SuccessResponse({
         message: "Find success",
         metadata: await ProductService.searchProduct(req.params)
-      }).send({res})
-    } catch(error) {
-      next (error)
+      }).send({ res })
+    } catch (error) {
+      next(error)
     }
   }
 
-  async findAllProducts (req, res, next) {
+  async findAllProducts(req, res, next) {
     try {
       new SuccessResponse({
         message: "Find all success",
         metadata: await ProductService.findAllProducts(req.query)
-      }).send({res})
-    } catch(error) {
-      next (error)
+      }).send({ res })
+    } catch (error) {
+      next(error)
     }
   }
 
-  async findProduct (req, res, next) {
+  async findProduct(req, res, next) {
     try {
       new SuccessResponse({
         message: "Find success",
         metadata: await ProductService.findProduct(req.params)
-      }).send({res})
-    } catch(error) {
-      next (error)
+      }).send({ res })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async updateProduct(req, res, next) {
+    try {
+      new SuccessResponse({
+        message: "Update success",
+        metadata: await ProductService.updateProduct({
+          product_id: req.params.product_id,
+          type: req.body.product_type,
+          payload: req.body
+        })
+      }).send({ res })
+    } catch (error) {
+      next(error)
     }
   }
 }

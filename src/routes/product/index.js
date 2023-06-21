@@ -11,5 +11,6 @@ router.get("/:product_id", ProductController.findProduct)
 router.use(authentication)
 
 router.post("/create", ProductController.createProduct)
+router.patch("/update/:product_id", ProductController.updateProduct)
 
 module.exports = router
