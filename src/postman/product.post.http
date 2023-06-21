@@ -4,10 +4,10 @@ POST {{url_dev}}/product/create
 x-api-key: 123
 x-client-id: 648fd76ebb50fa051b69650d
 Content-Type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDhmZDc2ZWJiNTBmYTA1MWI2OTY1MGQiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODcxNDg3NjUsImV4cCI6MTY4NzMyMTU2NX0.MaOXFTEsZ33BrFZMeq6AGdbPln79pi0iiphP6VFuQWU
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDhmZDc2ZWJiNTBmYTA1MWI2OTY1MGQiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODczMTM4NjgsImV4cCI6MTY4NzQ4NjY2OH0.2xLDIOMZFkWkxl42cNZSURLrvfJwLp8hzO9QqnwiRp8
 
 {
-  "product_name": "Ao thun",
+  "product_name": "Ao thun 1",
   "product_thumb": "abc.png",
   "product_price": "100000",
   "product_quantity_sold": "10020",
@@ -19,3 +19,18 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDhmZDc2ZWJi
     "material": "100% cotton"
   }
 }
+
+### search product
+GET {{url_dev}}/product/search/thun
+x-api-key: 123
+Content-Type: application/json
+
+### get all product
+GET {{url_dev}}/product
+x-api-key: 123
+Content-Type: application/json
+
+### get product
+GET {{url_dev}}/product/649267561909f3e97380bda8
+x-api-key: 123
+Content-Type: application/json

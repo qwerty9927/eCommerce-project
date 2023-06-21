@@ -19,6 +19,39 @@ class ProductController {
       next(error)
     }
   }
+
+  async searchProduct (req, res, next) {
+    try {
+      new SuccessResponse({
+        message: "Find success",
+        metadata: await ProductService.searchProduct(req.params)
+      }).send({res})
+    } catch(error) {
+      next (error)
+    }
+  }
+
+  async findAllProducts (req, res, next) {
+    try {
+      new SuccessResponse({
+        message: "Find all success",
+        metadata: await ProductService.findAllProducts(req.query)
+      }).send({res})
+    } catch(error) {
+      next (error)
+    }
+  }
+
+  async findProduct (req, res, next) {
+    try {
+      new SuccessResponse({
+        message: "Find success",
+        metadata: await ProductService.findProduct(req.params)
+      }).send({res})
+    } catch(error) {
+      next (error)
+    }
+  }
 }
 
 module.exports = new ProductController

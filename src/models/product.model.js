@@ -34,5 +34,7 @@ const productSchema = new Schema({
   collection: COLLECTION_NAME
 })
 
+// create index for search
+productSchema.index({ product_name: 'text' })
 
 module.exports = model(DOCUMENT_NAME, productSchema)

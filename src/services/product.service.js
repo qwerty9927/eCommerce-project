@@ -2,6 +2,11 @@ const ProductModel = require("../models/product.model")
 const ClothingModel = require("../models/clothing.model")
 const ElectronicModel = require("../models/electronic.model")
 const { ErrorResponse } = require('../core/error.response')
+const {
+  searchProduct,
+  findAllProducts,
+  findProduct
+} = require("../models/repositories/product.repo")
 
 class ProductFactory {
   static productRegistry = {}
@@ -27,6 +32,22 @@ class ProductFactory {
   //   }
   // }
 
+
+  // Start query
+  // 1. Search
+  async searchProduct({ keySearch }) {
+    return await searchProduct(keySearch)
+  }
+  // 2. findAllProduct
+  async findAllProducts({ limit = 10, page = 1, sort = "descending", filter = {}, select = ["product_name", "product_thumb", "product_price"] }) {
+    return await findAllProducts({ limit, page, sort, select, filter })
+  }
+  // 3. findProduct
+  async findProduct({ product_id, unSelect = ["__v"] }) {
+    return await findProduct({ product_id, unSelect })
+  }
+  // 4. updateProduct
+  // End query
 
 }
 

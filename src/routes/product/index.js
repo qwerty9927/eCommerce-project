@@ -3,6 +3,10 @@ const ProductController = require('../../controllers/product.controller')
 const { authentication } = require('../../auth/checkAuth')
 const router = express.Router()
 
+router.get("/search/:keySearch", ProductController.searchProduct)
+router.get("/", ProductController.findAllProducts)
+router.get("/:product_id", ProductController.findProduct)
+
 // authentication
 router.use(authentication)
 
