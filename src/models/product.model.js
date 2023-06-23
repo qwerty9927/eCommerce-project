@@ -23,7 +23,11 @@ const productSchema = new Schema({
     required: true
   },
   product_quantity_sold: {
-    type: String,
+    type: Number,
+    default: 0
+  },
+  product_quantity: {
+    type: Number,
     required: true
   },
   product_type: {

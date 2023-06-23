@@ -9,6 +9,9 @@ const {
   updateProductById,
   coupleProduct
 } = require("../models/repositories/product.repo")
+const {
+  inserInventory
+} = require("../models/repositories/inventory.repo")
 const { removeUndefineObject } = require("../utils")
 
 class ProductFactory {
@@ -66,6 +69,7 @@ class Product {
     product_thumb,
     product_price,
     product_quantity_sold,
+    product_quantity,
     product_type,
     product_shop
   }) {
@@ -73,12 +77,21 @@ class Product {
     this.product_thumb = product_thumb
     this.product_price = product_price
     this.product_quantity_sold = product_quantity_sold
+    this.product_quantity = product_quantity
     this.product_type = product_type
     this.product_shop = product_shop
   }
 
   async createProduct() {
-    return await ProductModel.create({ ...this })
+    const product = await ProductModel.create({ ...this })
+    if(product) {
+      await inserInventory({
+        inven_product_id: product._id,
+        inven_shop: product.product_shop,
+        inven_stock: product.product_quantity
+      })
+    }
+    return product
   }
 
   async updateProduct(product_id) {
@@ -100,7 +113,7 @@ class Clothing extends Product {
     const newClothing = await ClothingModel.create({ ...this.product_detail, _id: newProduct._id })
     if (!newClothing) throw new ErrorResponse()
 
-    return coupleProduct(newProduct, newClothing)
+    return coupleProduct(newProduct._doc, newClothing)
   }
 
   async updateProduct(product_id) {
@@ -128,7 +141,7 @@ class Electronic extends Product {
     const newElectronic = await ElectronicModel.create({ ...this.product_detail, _id: newProduct._id })
     if (!newElectronic) throw new ErrorResponse()
 
-    return coupleProduct(newProduct, newElectronic)
+    return coupleProduct(newProduct._doc, newElectronic)
   }
 }
 

@@ -11,7 +11,7 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDhmZDc2ZWJi
   "product_name": "Ao thun 2",
   "product_thumb": "abc.png",
   "product_price": "100000",
-  "product_quantity_sold": "10020",
+  "product_quantity": 100,
   "product_type": "clothing",
   "product_detail": {
     "product_description": "San pham duoc gia cong bang cong nghe Nhat Ban",
@@ -26,7 +26,7 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDhmZDc2ZWJi
 #   "product_name": "May lanh 1",
 #   "product_thumb": "abcd.png",
 #   "product_price": "100000",
-#   "product_quantity_sold": "10020",
+#   "product_quantity": 100,
 #   "product_type": "electronic",
 #   "product_detail": {
 #     "product_description": "San pham duoc gia cong bang cong nghe Nhat Ban",
@@ -63,12 +63,9 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDhmZDc2ZWJi
   "product_name": "Ao thun 3",
   "product_thumb": null,
   "product_price": "100000",
-  "product_quantity_sold": "10020",
+  "product_quantity": 100,
   "product_type": "clothing",
   "product_detail": {
-    "product_description": "San pham duoc gia cong bang cong nghe 2",
-    "brand": null,
-    "size": null,
-    "material": "100% cotton"
+    "product_description": "San pham duoc gia cong bang cong nghe 2"
   }
 }
