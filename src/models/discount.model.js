@@ -12,12 +12,14 @@ const discountSchema = new Schema({
   discount_start_date: { type: Date, required: true }, // ngay bat dau
   discount_end_date: { type: Date, required: true }, // ngay ket thuc
   discount_max_uses: { type: Number, required: true }, // so luong discount duoc ap dung
-  discount_used: { type: Number, required: true }, // so luong discount da dung
+  
+  discount_used: { type: Number, default: 0 }, // so luong discount da dung
   discount_users_used: { type: Array, default: [] }, // ai su dung
+  
   discount_max_uses_per_user: { type: Number, required: true }, // so luong cho phep toi da dung
   discount_min_order_value: { type: Number, required: true },
   discount_shop_id: { type: Schema.Types.ObjectId, ref: "shop" },
-  discount_is_active: { type: Boolean, required: true },
+  discount_is_active: { type: Boolean, default: false },
   discount_applies_to: { type: String, required: true, enum: ["all", "specific"] },
   discount_product_ids: { type: Array, default: [] } // san pham duoc ap dung
 }, {

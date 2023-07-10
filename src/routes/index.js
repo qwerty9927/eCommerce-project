@@ -14,4 +14,7 @@ router.use("/v1/api/access", require("./access"))
 // product
 router.use("/v1/api/product", require("./product"))
 
+// discount
+router.use("/v1/api/discount", require("./discount"))
+
 module.exports = router

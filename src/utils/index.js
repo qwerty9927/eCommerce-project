@@ -1,4 +1,7 @@
 const _ = require('lodash')
+const { Types } = require('mongoose')
+
+const convertToObjectId = id => Types.ObjectId(id)
 
 const getAttributeObject = (object = {}, fields = []) => {
   return _.pick(object, fields)
@@ -59,6 +62,7 @@ const updateNestedObjectParser = (data) => {
 }
 
 module.exports = {
+  convertToObjectId,
   getAttributeObject,
   getSelectData,
   unGetSelectData,

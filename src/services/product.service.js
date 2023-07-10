@@ -45,7 +45,7 @@ class ProductFactory {
     return await searchProduct(keySearch)
   }
   // 2. findAllProduct
-  async findAllProducts({ limit = 10, page = 1, sort = "descending", filter = {}, select = ["product_name", "product_thumb", "product_price"] }) {
+  async findAllProducts({ limit = 10, page = 1, sort = "descending", filter = {}, select = ["_id", "product_name", "product_thumb", "product_price"] }) {
     return await findAllProducts({ limit, page, sort, select, filter })
   }
   // 3. findProduct

@@ -2,9 +2,9 @@
 ### create product 
 POST {{url_dev}}/product/create
 x-api-key: 123
-x-client-id: 648fd76ebb50fa051b69650d
+x-client-id: 649bb852bc0c822fb7c7775d
 Content-Type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDhmZDc2ZWJiNTBmYTA1MWI2OTY1MGQiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODczMTM4NjgsImV4cCI6MTY4NzQ4NjY2OH0.2xLDIOMZFkWkxl42cNZSURLrvfJwLp8hzO9QqnwiRp8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDliYjg1MmJjMGM4MjJmYjdjNzc3NWQiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODc5MjY4NjYsImV4cCI6MTY4ODA5OTY2Nn0.B0LpWzp4eKLLs_KOpykr7qHNSetRyQSXHdraCxEZIPk
 
 # clothing
 {

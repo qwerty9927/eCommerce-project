@@ -1,0 +1,83 @@
+@url_dev = http://localhost:3050/v1/api
+
+# create discount
+POST {{url_dev}}/discount/create
+x-api-key: 123
+x-client-id: 649bb852bc0c822fb7c7775d
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDliYjg1MmJjMGM4MjJmYjdjNzc3NWQiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODgyMjE3MDQsImV4cCI6MTY4ODM5NDUwNH0.MuPcvhUnfE0PcBHj6PC9Y3g3SFWwHqWTkI26LxKr96c
+
+{
+  "discount_name": "Qua tang cho ban 1",
+  "discount_description": "Mua hang la co qua",
+  "discount_type": "fixed_amount",
+  "discount_value": 100,
+  "discount_code": "T125",
+  "discount_start_date": "Mon Jul 3 2023 11:51:05 GMT+0700",
+  "discount_end_date": "Tue Jul 4 2023 11:52:05 GMT+0700",
+  "discount_max_uses": 10,
+  "discount_max_uses_per_user": 2,
+  "discount_min_order_value": 10000,
+  "discount_is_active": false,
+  "discount_applies_to": "all"
+}
+###
+# update discount inactive
+PATCH {{url_dev}}/discount/update/inactive/649d2988755e0900dcce9622
+x-api-key: 123
+x-client-id: 649bb852bc0c822fb7c7775d
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDliYjg1MmJjMGM4MjJmYjdjNzc3NWQiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODc5MjY4NjYsImV4cCI6MTY4ODA5OTY2Nn0.B0LpWzp4eKLLs_KOpykr7qHNSetRyQSXHdraCxEZIPk
+
+{
+  "discount_name": "Qua tang cho ban 1234",
+  "discount_description": "Mua hang la co qua",
+  "discount_type": "fixed_amount",
+  "discount_value": null,
+  "discount_code": "Tabd",
+  "discount_start_date": "Fri Jun 30 2023 11:50:05 GMT+0700",
+  "discount_end_date": "Fri Jun 30 2023 11:51:05 GMT+0700",
+  "discount_max_uses": 10,
+  "discount_max_uses_per_user": 2,
+  "discount_min_order_value": 10000,
+  "discount_is_active": true,
+  "discount_applies_to": "all"
+}
+
+###
+# update discount active
+PATCH {{url_dev}}/discount/update/active/649d2988755e0900dcce9622
+x-api-key: 123
+x-client-id: 649bb852bc0c822fb7c7775d
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDliYjg1MmJjMGM4MjJmYjdjNzc3NWQiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODc5MjY4NjYsImV4cCI6MTY4ODA5OTY2Nn0.B0LpWzp4eKLLs_KOpykr7qHNSetRyQSXHdraCxEZIPk
+
+{
+  "discount_name": "Qua tang cho ban 123456",
+  "discount_description": "Mua hang la co qua",
+  "discount_code": "Tabc",
+  "discount_max_uses": 10,
+  "discount_max_uses_per_user": 2
+}
+
+###
+# delete discount
+DELETE  {{url_dev}}/discount/delete/649d2988755e0900dcce9622
+x-api-key: 123
+x-client-id: 649bb852bc0c822fb7c7775d
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDliYjg1MmJjMGM4MjJmYjdjNzc3NWQiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODc5MjY4NjYsImV4cCI6MTY4ODA5OTY2Nn0.B0LpWzp4eKLLs_KOpykr7qHNSetRyQSXHdraCxEZIPk
+
+###
+# get all discount
+GET  {{url_dev}}/discount/649bb852bc0c822fb7c7775d
+x-api-key: 123
+Content-Type: application/json
+
+###
+# get all my discount
+GET  {{url_dev}}/discount
+x-api-key: 123
+x-client-id: 649bb852bc0c822fb7c7775d
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDliYjg1MmJjMGM4MjJmYjdjNzc3NWQiLCJlbWFpbCI6InRhbnZvOTkyN0BnbWFpbC5jb20iLCJpYXQiOjE2ODgyMjE3MDQsImV4cCI6MTY4ODM5NDUwNH0.MuPcvhUnfE0PcBHj6PC9Y3g3SFWwHqWTkI26LxKr96c
